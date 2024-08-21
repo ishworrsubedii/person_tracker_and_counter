@@ -1,0 +1,36 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+handlers:
+  file_size:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: simple
+    filename: logs/logfile_size.log
+    maxBytes: 20971520
+    backupCount: 12
+    encoding: utf8
+
+  time_interval:
+    class: logging.handlers.TimedRotatingFileHandler
+    level: DEBUG
+    formatter: simple
+    filename: logs/logfile_time.log
+    when: H
+    interval: 1
+    backupCount: 12
+    encoding: utf8
+
+loggers:
+  my_logger:
+    level: DEBUG
+    handlers: [ file_size, time_interval ]
+    propagate: no
+
+root:
+  level: DEBUG
+  handlers: [ file_size, time_interval ]
