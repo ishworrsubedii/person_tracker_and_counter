@@ -1,6 +1,8 @@
-resources
 results
 logs
 __pycache__
 .idea
+
 .
+models
+*.mp4

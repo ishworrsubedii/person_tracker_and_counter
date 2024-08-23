@@ -1,9 +1,9 @@
-model_path: "resources/models/yolov8n.pt"
+model_path: "resources/models/yolov8m.pt"
 result_dir: "results/"
-tracker_config: "bytetrack.yaml"
-conf: 0.5
+tracker_config: "resources/config/bytetrack.yaml"
+conf: 0.85
 device: "cuda:0"
-iou: 0.5
+iou: 0.85
 img_size: [ 720, 1080 ]
 video_source: 0
 show: True
