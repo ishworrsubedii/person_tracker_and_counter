@@ -1,4 +1,7 @@
 ## Introduction
+This project is designed to track and count people in real-time using a camera or video feed. It's useful for applications like monitoring crowds, keeping track of how many people enter or exit a room, or any scenario where you need to keep count of the number of people in a given space.
+
+<img src=https://miro.medium.com/v2/resize:fit:4800/format:webp/1*n2jR3FQEVA9A_8S5uMhcGw.png>
 
 ## Installation
 
