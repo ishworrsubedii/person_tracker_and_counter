@@ -29,6 +29,7 @@ For setup please check the params.yaml file and change the values accordingly.
    img_size: [ 720, 1080 ]
    video_source: 0
    show: True
+#   rtsp://admin:IXZBNE@192.168.1.178:8000/h264_opus.sdp
 
 ```
 

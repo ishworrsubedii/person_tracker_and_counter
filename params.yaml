@@ -1,9 +1,27 @@
-model_path: "resources/models/yolov8m.pt"
+model_path: "resources/models/yolov8n.pt"
 result_dir: "results/"
-tracker_config: "resources/config/bytetrack.yaml"
-conf: 0.85
-device: "cuda:0"
-iou: 0.85
-img_size: [ 720, 1080 ]
-video_source: 0
+tracker_config: "resources/config/botsort.yaml"
+conf: 0.8
+device: "cuda"
+iou: 0.8
+img_size: [ 420, 500 ]
+video_source: resources/5 hours of Walking in Tokyo as a Black Woman __ How Do Japanese Treat Black Women_ (Black in Japan).mp4 #0 #rtsp://admin:IXZBNE@192.168.1.178:554/live/channel/1
 show: True
+
+# Zone-based tracking configuration
+# Define 4 points in xyxy format to create detection zone
+# Format: [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]
+# These points will form a polygon where only people inside will be tracked
+zone_points: [
+  [ 88 , 8 ],   # Top-left point
+  [ 479, 5 ],   # Top-right point
+  [ 508, 466 ],   # Bottom-right point
+  [ 85, 463 ]    # Bottom-left point
+]
+
+# Zone tracking settings
+use_zone_tracking: True  # Set to True to enable zone-based tracking
+zone_tracker_config: "resources/config/botsort.yaml"
+memory_cleanup_interval: 300
+mx_memory_usage: 75
+save_frames: True  # Set to True to save frames for debugging
