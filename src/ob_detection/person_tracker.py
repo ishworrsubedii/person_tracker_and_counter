@@ -2,6 +2,7 @@
 Created By: ishwor subedi
 Date: 2024-08-22
 """
+import cv2
 from ultralytics import YOLO
 from datetime import datetime
 import os
@@ -33,10 +34,18 @@ class PersonTracker:
 
         results = self.model.track(
             source, show=show, stream=True, tracker=self.tracker_config, conf=self.conf,
-            device=self.device, iou=self.iou, stream_buffer=True, classes=[0], imgsz=self.img_size
+            device=self.device, iou=self.iou, classes=[0, 1], stream_buffer=True, imgsz=self.img_size
         )
 
+        save_path = "/home/ishwor/Desktop/people_count/results/image.png"
+
         for i, result in enumerate(results):
+            # Convert result frame to NumPy array
+            frame = result.plot()  # YOLOv8 result with boxes drawn
+
+            # Save the frame as image.png (overwrites each time)
+            cv2.imwrite(save_path, frame)
+
             boxes = result.boxes
             try:
                 id_count = boxes.id.int().tolist()
@@ -49,8 +58,9 @@ class PersonTracker:
                     previous_person_count = person_count
                     with open(result_file, 'w') as filewrite:
                         filewrite.write(f"Person count: {person_count}\n")
-                        logger.info(f"Person count: {person_count}")
+                        if logger:
+                            logger.info(f"Person count: {person_count}")
                         print("Person count=", person_count)
 
-            except Exception as e:
+            except Exception:
                 pass
