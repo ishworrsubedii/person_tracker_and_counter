@@ -1,1 +1,1 @@
-python -m main
+python -m zone_tracker_example
